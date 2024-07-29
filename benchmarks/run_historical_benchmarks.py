@@ -90,10 +90,11 @@ venv = "cd /tmp && . .venv/bin/activate && "
 
 # install PyTorch
 subprocess.call(
-    f"{venv} pip3 install onnx==1.6.0 tensorboard pandas sklearn", shell=True
+    f"{venv} pip3 install onnx==1.6.0 tensorboard pandas scikit-learn", shell=True
 )
 stable_url = "https://download.pytorch.org/whl/torch_stable.html"
-pip_torch = f"pip install torch==1.5.1+cu{cuda_version} torchvision==0.6.1+cu{cuda_version} -f https://download.pytorch.org/whl/torch_stable.html"
+pip_torch = f"pip install torch==1.5.1+cu{cuda_version} torchvision==0.6.1+cu{
+    cuda_version} -f https://download.pytorch.org/whl/torch_stable.html"
 subprocess.call(f"{venv} {pip_torch} -f {stable_url}", shell=True)
 
 
@@ -111,14 +112,16 @@ for date in dates:
     )
     for mode, arg in modes.items():
         subprocess.call(venv + "pip3 install CrypTen/.", shell=True)
-        subprocess.call(f"echo Generating {date} Benchmarks for {mode}", shell=True)
+        subprocess.call(f"echo Generating {
+                        date} Benchmarks for {mode}", shell=True)
         path = os.path.join(PATH, f"dash_app/data/{date}", mode)
         subprocess.call(f"mkdir -p {path}", shell=True)
         subprocess.call(
             venv + f"cd {PATH} && python3 benchmark.py -p '{path}' {arg}", shell=True
         )
         subprocess.call(
-            venv + f"cd {PATH} && python3 benchmark.py -p '{path}' -d 'cuda' {arg}",
+            venv +
+            f"cd {PATH} && python3 benchmark.py -p '{path}' -d 'cuda' {arg}",
             shell=True,
         )
 
