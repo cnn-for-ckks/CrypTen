@@ -34,7 +34,7 @@ class CrypTenConfig:
     """
 
     __DEFAULT_CONFIG_PATH = os.path.normpath(
-        os.path.join(__file__, "../../../configs/default.yaml")
+        "/configs/default.yaml"
     )
 
     def __init__(self, config_file=None):
