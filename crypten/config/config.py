@@ -33,9 +33,7 @@ class CrypTenConfig:
         print(cfg.a.b)  # prints outer value
     """
 
-    __DEFAULT_CONFIG_PATH = os.path.normpath(
-        "/configs/default.yaml"
-    )
+    __DEFAULT_CONFIG_PATH = os.path.normpath("default.yaml")
 
     def __init__(self, config_file=None):
         self.load_config(config_file)
